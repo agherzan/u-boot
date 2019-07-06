@@ -26,6 +26,23 @@ config BCM2837_64B
 	select BCM2837
 	select ARM64
 
+config BCM2838
+	bool "Broadcom BCM2838 SoC support"
+	depends on ARCH_BCM283X
+
+config BCM2838_32B
+	bool "Broadcom BCM2838 SoC 32-bit support"
+	depends on ARCH_BCM283X
+	select BCM2838
+	select ARMV7_LPAE
+	select CPU_V7A
+
+config BCM2838_64B
+	bool "Broadcom BCM2838 SoC 64-bit support"
+	depends on ARCH_BCM283X
+	select BCM2838
+	select ARM64
+
 menu "Broadcom BCM283X family"
 	depends on ARCH_BCM283X
 
@@ -126,6 +143,24 @@ config TARGET_RPI_3
 
 	  This option creates a build targeting the ARMv8/AArch64 ISA.
 	select BCM2837_64B
+
+config TARGET_RPI_4
+	bool "Raspberry Pi 4 64-bit build"
+	help
+	  Support for all BCM2838-based Raspberry Pi variants, such as
+	  the RPi 4 model B, in AArch64 (64-bit) mode.
+
+	  This option creates a build targeting the ARMv8/AArch64 ISA.
+	select BCM2838_64B
+
+config TARGET_RPI_4_32B
+	bool "Raspberry Pi 4 32-bit build"
+	help
+	  Support for all BCM2838-based Raspberry Pi variants, such as
+	  the RPi 4 model B, in AArch32 (32-bit) mode.
+
+	  This option creates a build targeting the ARMv7/AArch32 ISA.
+	select BCM2838_32B
 
 endchoice
 
