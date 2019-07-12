@@ -7,7 +7,11 @@
 #define _BCM2835_WDOG_H
 
 #ifndef CONFIG_BCM2835
+#ifdef CONFIG_BCM2838
+#define BCM2835_WDOG_PHYSADDR			0xfe100000
+#else
 #define BCM2835_WDOG_PHYSADDR			0x3f100000
+#endif
 #else
 #define BCM2835_WDOG_PHYSADDR			0x20100000
 #endif
